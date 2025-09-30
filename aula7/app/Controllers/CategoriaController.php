@@ -15,6 +15,12 @@
             $title = "Criar Categorias";
             return (new Render())->render('categorias/criar', compact('title'));
         }
+
+        public function ver(int $id): string{
+            $title = "Ver Categorias";
+            $categoria = array_values(array_filter($_SESSION['categorias'], fn(item)=>$item['id'] == $id))[0] ?? NULL;
+            return (new Render())->render('categorias/ver', compact('title', 'categoria'));
+        }
         //Funções de APIs
     }
 ?>

@@ -45,5 +45,11 @@
             echo (new CategoriaController())->criar();
             exit;
         }
+
+        if($uri === "/categorias/ver"){
+            $id = (int)($_GET['id'] ?? 0); 
+            echo (new CategoriaController())->ver($id);
+            exit;
+        }
     }
 ?> 
