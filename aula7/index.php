@@ -13,7 +13,7 @@
     }
 
     //Variavel basedir
-    $basedir = "/programacao-web-php/aula7";
+    $basedir = "/Programacao-Web-PHP/aula7";
 
     //Pegar URL Crua (Sem Tratamento)
     $uri = $_SERVER["REQUEST_URI"] ?? "/";
@@ -51,5 +51,24 @@
             echo (new CategoriaController())->ver($id);
             exit;
         }
+    }
+
+    if($uri === '/api/categorias' && $metodo == 'GET'){
+        echo (new CategoriaController())->list();
+        exit;
+    }
+
+    if($uri === '/api/categorias' && $metodo == 'POST'){
+        echo "teste";
+        echo (new CategoriaController())->create();
+        header('location: /Programacao-Web-PHP/aula7/categorias');
+        exit;
+    }
+
+    if($uri === '/api/categorias/deletar' && $metodo == 'POST'){
+        $id = (int)($_POST['id'] ?? 0);
+        echo (new CategoriaController())->delete($id);
+        header('location: /Programacao-Web-PHP/aula7/categorias');
+        exit;
     }
 ?> 
