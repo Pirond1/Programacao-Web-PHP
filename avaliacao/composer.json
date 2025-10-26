@@ -1,5 +1,5 @@
 {
-  "name": "avaliacao2/mvc",
+  "name": "avaliacao/mvc",
   "description": "MVC simples em PHP 8",
   "type": "project",
   "require": {

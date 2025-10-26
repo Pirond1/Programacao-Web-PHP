@@ -16,7 +16,7 @@
     }
 
     //Variavel basedir
-    $basedir = "/Programacao-Web-PHP/avaliacao2";
+    $basedir = "/Programacao-Web-PHP/avaliacao";
 
     //Pegar URL Crua (Sem Tratamento)
     $uri = $_SERVER["REQUEST_URI"] ?? "/";
@@ -78,16 +78,21 @@
     }
 
     if($uri === '/api/categorias' && $metodo == 'POST'){
-        echo "teste";
         echo (new CategoriaController())->create();
-        header('location: /Programacao-Web-PHP/avaliacao2/categorias');
+        header('location: /Programacao-Web-PHP/avaliacao/categorias');
         exit;
     }
 
     if($uri === '/api/categorias/deletar' && $metodo == 'POST'){
         $id = (int)($_POST['id'] ?? 0);
         echo (new CategoriaController())->delete($id);
-        header('location: /Programacao-Web-PHP/avaliacao2/categorias');
+        header('location: /Programacao-Web-PHP/avaliacao/categorias');
+        exit;
+    }
+
+    if($uri === '/api/categorias/atualizar' && $metodo == 'POST'){
+        echo (new CategoriaController())->update();
+        header('location: /Programacao-Web-PHP/avaliacao/categorias');
         exit;
     }
 
@@ -98,16 +103,21 @@
     }
 
     if($uri === '/api/produtos' && $metodo == 'POST'){
-        echo "teste";
         echo (new ProdutoController())->create();
-        header('location: /Programacao-Web-PHP/avaliacao2/produtos');
+        header('location: /Programacao-Web-PHP/avaliacao/produtos');
         exit;
     }
 
     if($uri === '/api/produtos/deletar' && $metodo == 'POST'){
         $id = (int)($_POST['id'] ?? 0);
         echo (new ProdutoController())->delete($id);
-        header('location: /Programacao-Web-PHP/avaliacao2/produtos');
+        header('location: /Programacao-Web-PHP/avaliacao/produtos');
+        exit;
+    }
+
+    if($uri === '/api/produtos/atualizar' && $metodo == 'POST'){
+        echo (new ProdutoController())->update();
+        header('location: /Programacao-Web-PHP/avaliacao/produtos');
         exit;
     }
 ?> 
